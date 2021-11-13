@@ -10,7 +10,6 @@ package daw.receptes.config;
  * @author guill
  */
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.ViewControllerRegistration;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
@@ -21,10 +20,10 @@ public class MyConfig implements WebMvcConfigurer {
     {
         registry.addViewController("/").setViewName("index");
         registry.addViewController("/index.html").setViewName("index");
-        registry.addViewController("/catagory.html").setViewName("catagory");
-        registry.addViewController("/catagory-post.html").setViewName("catagory-post");
-        registry.addViewController("/single-post.html").setViewName("single-post");
-        registry.addViewController("/receipe.html").setViewName("receipe");
+        registry.addViewController("/recepta.html").setViewName("recepta");
         registry.addViewController("/contact.html").setViewName("contact");
+        registry.addViewController("/usuarihome.html").setViewName("usuarihome");
+        //registry.addViewController("/single-post.html").setViewName("single-post");
+        //registry.addViewController("/receipe.html").setViewName("receipe");
     }
 }

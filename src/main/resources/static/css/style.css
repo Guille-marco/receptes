@@ -1,15 +1,11 @@
-/* Master Stylesheet - 1.0 */
-/* :: 1.0 Import Fonts */
 @import url("https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600,700");
-/* :: 2.0 Import All CSS */
-@import url(static/css/bootstrap.min.css);
-@import url(static/css/classy-nav.css);
-@import url(static/css/owl.carousel.min.css);
-@import url(static/css/animate.css);
-@import url(static/css/magnific-popup.css);
-@import url(static/css/font-awesome.min.css);
-@import url(static/css/nice-select.css);
-/* :: 3.0 Base CSS */
+@import url(bootstrap.min.css);
+@import url(classy-nav.css);
+@import url(owl.carousel.min.css);
+@import url(animate.css);
+@import url(magnific-popup.css);
+@import url(font-awesome.min.css);
+@import url(nice-select.css);
 * {
   margin: 0;
   padding: 0; }
@@ -97,10 +93,7 @@ img {
   margin-left: 30px !important; }
 
 .ml-50 {
-    margin-left: 50px !important; }
-
-.ml-350 {
-    margin-left: 350px !important; }
+  margin-left: 50px !important; }
 
 .mr-15 {
   margin-right: 15px !important; }
@@ -113,9 +106,6 @@ img {
 
 .pb-70 {
   padding-bottom: 70px !important; }
-
-.pb-30 {
-  padding-bottom: 30px !important; }
 
 /* :: 3.2.0 Height */
 .height-400 {
@@ -149,16 +139,6 @@ img {
 .section-padding-100-70 {
   padding-top: 100px;
   padding-bottom: 70px; }
-
-.section-padding-50 {
-  padding-top: 50px;
-  padding-bottom: 50px;
-}
-
-.section-padding-50-0 {
-  padding-top: 50px;
-  padding-bottom: 0;
-}
 
 /* :: 3.4.0 Preloader */
 .preloader {
@@ -429,7 +409,7 @@ h3 {
   position: relative;
   z-index: 1;
   display: inline-block;
-  min-width: 60px;
+  min-width: 160px;
   height: 50px;
   color: #ffffff;
   border-radius: 0;
@@ -443,25 +423,6 @@ h3 {
     font-weight: 500;
     background-color: #000000;
     color: #ffffff; }
-
-.btn-receptes {
-  -webkit-transition-duration: 500ms;
-  transition-duration: 500ms;
-  background-color: #b0c364;
-  color: #fff;
-  border-color: #b0c364;
-  border-radius: 7%;
-}
-
-.btn-receptes:hover,
-.btn-receptes:active,
-.btn-receptes:focus,
-.btn-receptes.active {
-  /* let's darken #004E64 a bit for hover effect */
-  background: #000;
-  color: #ffffff;
-  border-color: #000;
-}
 
 /* :: 4.0 Header Area CSS */
 .header-area {
@@ -522,26 +483,23 @@ h3 {
     z-index: 1;
     padding: 50px 30px;
     text-align: center; }
-    @media only screen and (min-width: 992px) {
+    @media only screen and (min-width: 992px) and (max-width: 1199px) {
       .header-area .logo-area {
-        padding: 20px; } }
+        padding: 30px; } }
     @media only screen and (min-width: 768px) and (max-width: 991px) {
       .header-area .logo-area {
-        padding: 20px; } }
+        padding: 30px; } }
     @media only screen and (max-width: 767px) {
       .header-area .logo-area {
-        padding: 20px 15px; } }
+        padding: 30px 15px; } }
     .header-area .logo-area a {
       display: inline-block; }
-      @media only screen and (min-width: 992px) {
-        .header-area .logo-area a {
-          max-width: 150px; } }
       @media only screen and (min-width: 768px) and (max-width: 991px) {
         .header-area .logo-area a {
-          max-width: 100px; } }
+          max-width: 150px; } }
       @media only screen and (max-width: 767px) {
         .header-area .logo-area a {
-          max-width: 100px; } }
+          max-width: 150px; } }
   .header-area .bueno-main-menu {
     position: relative;
     width: 100%;
@@ -559,19 +517,19 @@ h3 {
       .header-area .bueno-main-menu .classy-navbar .classynav ul li a {
         font-weight: 600;
         text-transform: capitalize;
-        font-size: 18px;
-        padding: 0 20px;
+        font-size: 15px;
+        padding: 0 10px;
         color: #404040; }
         .header-area .bueno-main-menu .classy-navbar .classynav ul li a:hover, .header-area .bueno-main-menu .classy-navbar .classynav ul li a:focus {
           color: #b0c364; }
       .header-area .bueno-main-menu .classy-navbar .classynav ul li ul li a {
         color: #404040;
-        font-size: 16px;
+        font-size: 14px;
         padding: 0 20px; }
     .header-area .bueno-main-menu .login-area {
       position: relative;
       z-index: 1;
-      margin-left: 400px; }
+      margin-left: 100px; }
       @media only screen and (min-width: 768px) and (max-width: 991px) {
         .header-area .bueno-main-menu .login-area {
           margin-left: 10px;
@@ -584,7 +542,7 @@ h3 {
         display: inline-block;
         font-weight: 500;
         color: #7a7a7a;
-        font-size: 18px; }
+        font-size: 16px; }
         .header-area .bueno-main-menu .login-area a:hover, .header-area .bueno-main-menu .login-area a:focus {
           color: #b0c364; }
   .header-area .is-sticky .bueno-main-menu {
@@ -1689,13 +1647,6 @@ h3 {
     @media only screen and (max-width: 767px) {
       .map-area iframe {
         height: 300px; } }
-
-/* :: 14.0 Back nav CSS */
-.back a {
-  font-size: 14px;
-  color: #404040; }
-.back a:hover, a:focus {
-  color: #b0c364; }
 
 /* ====== The End ====== */
 
