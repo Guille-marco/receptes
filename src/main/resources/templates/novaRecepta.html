@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Receptes - Recull de receptes en català</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="../static/img/icons/favicon.ico">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../static/css/style.css" type="text/css"/>
+
+
+</head>
+
+<body>
+<!-- ##### Header Area Start ##### -->
+<header class="header-area">
+
+    <!-- Logo Area -->
+    <div class="logo-area">
+        <a href="userHome.html"><img src="../static/img/logo.png" alt=""></a>
+    </div>
+
+    <!-- Navbar Area -->
+    <div class="bueno-main-menu" id="sticker">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+                <!-- Menu -->
+                <nav class="classy-navbar justify-content-between" id="buenoNav">
+
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="classy-menu">
+
+                        <!-- Close Button -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li><a href="#">Receptes</a>
+                                    <ul class="dropdown">
+                                        <li><a href="#">Amanides</a></li>
+                                        <li><a href="#">Verdures</a></li>
+                                        <li><a href="#">Sopes</a></li>
+                                        <li><a href="#">Cereals</a></li>
+                                        <li><a href="#">Llegums</a></li>
+                                        <li><a href="#">Carns</a></li>
+                                        <li><a href="#">Peixos</a></li>
+                                        <li><a href="#">Ous</a></li>
+                                        <li><a href="#">Postres</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Les meves dades</a>
+                                    <ul class="dropdown">
+                                        <li><a href="#">Perfil d’usuari</a></li>
+                                        <li><a href="#">Les meves receptes</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="#">Crear Recepta</a></li>
+                            </ul>
+
+                            <!-- Log out -->
+                            <div class="login-area">
+                                <a href="home.html">Sortir</a>
+                            </div>
+
+                        </div>
+                        <!-- Nav End -->
+
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- ##### Header Area End ##### -->
+
+<!-- ##### Form Area Start ##### -->
+<div class="mb-70 section-padding-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 mb-50">
+                <h4 class="text-center mb-15">Comparteix la teva recepta</h4>
+                <hr style="width:15%; margin: auto; ">
+            </div>
+            <!-- Form Area -->
+            <div class="col-12">
+                <!-- Contact Form Area -->
+                <div class="mb-70">
+                    <form action="#" method="post">
+                        <!-- Hidden inputs -->
+                            <!-- Nom usuari -->
+                            <!-- Dia i Hora d’enviament -->
+
+                        <div class="row">
+                            <!-- Dades generals de la recepta -->
+                            <div class="col-12">
+                                <h6 class="mb-15">Dades Generals</h6>
+                                <div class="form-group ml-15">
+                                    <label for="name">Títol de la recepta</label>
+                                    <input type="text" class="form-control" id="name" placeholder="Nom per identificar la recepta fàcilment">
+                                </div>
+                                <div class="form-group ml-15">
+                                    <label for="descripcio">Descripció de la recepta</label>
+                                    <textarea name="message" class="form-control" id="descripcio" cols="30" rows="10" aria-describedby="descripcioHelp" placeholder="Breu descripció de la recepta"></textarea>
+                                    <small id="descripcioHelp" class="form-text text-muted">La descripció es visualitzarà en les búsquedes de receptes. Ha de ser un text concís i aclaridor.</small>
+                                </div>
+                                <div class="row">
+                                    <div class="form-group col-md-3 ml-15">
+                                        <label class="mr-sm-2" for="categoria">Categoria</label>
+                                        <select class="custom-select mr-sm-2" id="categoria">
+                                            <option selected>Tria...</option>
+                                            <option value="amanides">Amanides</option>
+                                            <option value="verdures">Verdures</option>
+                                            <option value="sopes">Sopes</option>
+                                            <option value="cereals">Cereals</option>
+                                            <option value="llegums">Llegums</option>
+                                            <option value="carns">Carns</option>
+                                            <option value="peixos">Peixos</option>
+                                            <option value="ous">Ous</option>
+                                            <option value="postres">Postres</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label for="temps">Durada</label>
+                                        <div class="input-group mb-3">
+                                            <input type="number" class="form-control" id="temps" placeholder="durada" aria-label="durada" aria-describedby="basic-addon">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" id="basic-addon">minuts</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="dificultat">Dificultat</label>
+                                        <select class="custom-select" id="dificultat">
+                                            <option selected>Tria...</option>
+                                            <option value="facil">Fàcil</option>
+                                            <option value="mitja">Mitja</option>
+                                            <option value="dificil">Difícil</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group col-md-3">
+                                        <label for="comensals">Número de persones</label>
+                                        <div class="input-group mb-3">
+                                            <input type="number" class="form-control" id="comensals" placeholder="comensals" aria-label="Número de persones" aria-describedby="basic-addon2">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" id="basic-addon2">persones</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <!-- Fotografia -->
+                            <div class="col-12 mt-15">
+                                <h6 class="mb-15">Arxiu</h6>
+                                <div class="form-group ml-15">
+                                    <label for="arxiuFoto">Fotografia de la recepta</label>
+                                    <input type="file" class="form-control-file" id="arxiuFoto">
+                                </div>
+                            </div>
+
+                            <!-- Ingredients -->
+                            <div class="col-12 mt-15">
+                                <h6 class="mb-15">Ingredients</h6>
+                                <div class="form-row">
+                                    <div class="form-group ml-15 col-md-5">
+                                        <label for="ingredient">Ingredient</label>
+                                        <input type="text" class="form-control" id="ingredient">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label for="quantitat">Quantitat</label>
+                                        <input type="number" class="form-control" id="quantitat">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <label for="mesura">Unitat de mesura</label>
+                                        <select id="mesura" class="custom-select">
+                                            <option selected>gr</option>
+                                            <option>ml</option>
+                                            <option>u.</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group ml-15 col-md-5">
+                                        <input type="text" class="form-control" id="ingredient2">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <input type="number" class="form-control" id="quantitat2">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <select id="mesura2" class="custom-select">
+                                            <option selected>gr</option>
+                                            <option>ml</option>
+                                            <option>u.</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group ml-15 col-md-5">
+                                        <input type="text" class="form-control" id="ingredient3">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <input type="number" class="form-control" id="quantitat3">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <select id="mesura3" class="custom-select">
+                                            <option selected>gr</option>
+                                            <option>ml</option>
+                                            <option>u.</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group ml-15 col-md-5">
+                                        <input type="text" class="form-control" id="ingredient4">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <input type="number" class="form-control" id="quantitat4">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <select id="mesura4" class="custom-select">
+                                            <option selected>gr</option>
+                                            <option>ml</option>
+                                            <option>u.</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group ml-15 col-md-5">
+                                        <input type="text" class="form-control" id="ingredient5">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <input type="number" class="form-control" id="quantitat5">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <select id="mesura5" class="custom-select">
+                                            <option selected>gr</option>
+                                            <option>ml</option>
+                                            <option>u.</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group ml-15 col-md-5">
+                                        <input type="text" class="form-control" id="ingredient6">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <input type="number" class="form-control" id="quantitat6">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <select id="mesura6" class="custom-select">
+                                            <option selected>gr</option>
+                                            <option>ml</option>
+                                            <option>u.</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group ml-15 col-md-5">
+                                        <input type="text" class="form-control" id="ingredient7">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <input type="number" class="form-control" id="quantitat7">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <select id="mesura7" class="custom-select">
+                                            <option selected>gr</option>
+                                            <option>ml</option>
+                                            <option>u.</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group ml-15 col-md-5">
+                                        <input type="text" class="form-control" id="ingredient8">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <input type="number" class="form-control" id="quantitat8">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <select id="mesura8" class="custom-select">
+                                            <option selected>gr</option>
+                                            <option>ml</option>
+                                            <option>u.</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group ml-15 col-md-5">
+                                        <input type="text" class="form-control" id="ingredient9">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <input type="number" class="form-control" id="quantitat9">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <select id="mesura9" class="custom-select">
+                                            <option selected>gr</option>
+                                            <option>ml</option>
+                                            <option>u.</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group ml-15 col-md-5">
+                                        <input type="text" class="form-control" id="ingredient10">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <input type="number" class="form-control" id="quantitat10">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <select id="mesura10" class="custom-select">
+                                            <option selected>gr</option>
+                                            <option>ml</option>
+                                            <option>u.</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group ml-15 col-md-5">
+                                        <input type="text" class="form-control" id="ingredient11">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <input type="number" class="form-control" id="quantitat11">
+                                    </div>
+                                    <div class="form-group col-md-2">
+                                        <select id="mesura11" class="custom-select">
+                                            <option selected>gr</option>
+                                            <option>ml</option>
+                                            <option>u.</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Pasos de recepta -->
+                            <div class="col-12 mt-15">
+                                <h6 class="mb-15">Pasos per fer la recepta</h6>
+                                <div class="form-group ml-15">
+                                    <label for="pas1">Pas 1</label>
+                                    <textarea name="pas1" class="form-control" id="pas1" cols="30" rows="10" aria-describedby="pas1Help" placeholder="Descripció del primer pas per fer la recepta"></textarea>
+                                    <small id="pas1Help" class="form-text text-muted">La recepta s’ha d’explicar en un màxim de 5 possibles pasos. Cada pas ha de desciure una part del procés.</small>
+                                </div>
+                                <div class="form-group ml-15">
+                                    <label for="pas2">Pas 2</label>
+                                    <textarea name="pas2" class="form-control" id="pas2" cols="30" rows="10" placeholder="Descripció del segon pas per fer la recepta"></textarea>
+                                </div>
+                                <div class="form-group ml-15">
+                                    <label for="pas3">Pas 3</label>
+                                    <textarea name="pas1" class="form-control" id="pas3" cols="30" rows="10" placeholder="Descripció del tercer pas per fer la recepta"></textarea>
+                                </div>
+                                <div class="form-group ml-15">
+                                    <label for="pas4">Pas 4</label>
+                                    <textarea name="pas1" class="form-control" id="pas4" cols="30" rows="10" placeholder="Descripció del quart pas per fer la recepta"></textarea>
+                                </div>
+                                <div class="form-group ml-15">
+                                    <label for="pas5">Pas 5</label>
+                                    <textarea name="pas1" class="form-control" id="pas5" cols="30" rows="10" placeholder="Descripció del cinquè pas per fer la recepta"></textarea>
+                                </div>
+                            </div>
+
+                            <div class="col-12">
+                                <button class="btn bueno-btn mt-30" type="submit">Enviar</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Posts Area End ##### -->
+
+<!-- ##### Footer Area Start ##### -->
+<footer class="footer-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Copywrite Text -->
+                <p class="copywrite-text"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> Tots els drets reservats
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- ##### Footer Area End ##### -->
+
+<!-- ##### All Javascript Script ##### -->
+<!-- jQuery-2.2.4 js -->
+<script src="../static/js/jquery/jquery-2.2.4.min.js"></script>
+<!-- Popper js -->
+<script src="../static/js/bootstrap/popper.min.js"></script>
+<!-- Bootstrap js -->
+<script src="../static/js/bootstrap/bootstrap.min.js"></script>
+<!-- All Plugins js -->
+<script src="../static/js/plugins/plugins.js"></script>
+<!-- Active js -->
+<script src="../static/js/active.js"></script>
+</body>
+
+</html>
