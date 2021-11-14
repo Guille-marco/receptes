@@ -12,9 +12,9 @@
     });
 
     // :: 2.0 Nav Active Code
-    if ($.fn.classyNav) {
-        $('#buenoNav').classyNav();
-    }
+//    if ($.fn.classyNav) {
+//        $('#buenoNav').classyNav();
+//    }
 
     // :: 3.0 Sticky Active Code
     if ($.fn.sticky) {
