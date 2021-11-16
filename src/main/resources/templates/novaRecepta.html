@@ -108,10 +108,12 @@ and open the template in the editor.
             <div class="col-12">
                 <!-- Contact Form Area -->
                 <div class="mb-70">
-                    <form action="#" method="post">
+                    <form id="recipe-form" action="https://xxx.xxx.xxx.xxx:8443/api/newRecipe">
                         <!-- Hidden inputs -->
-                            <!-- Nom usuari -->
-                            <!-- Dia i Hora d’enviament -->
+                        <!-- Nom usuari -->
+                        <input type="hidden" id="user" value="usuari"/>
+                        <!-- Dia i Hora d’enviament -->
+                        <input type="hidden" id="date" value="14/11/2021"/>
 
                         <div class="row">
                             <!-- Dades generals de la recepta -->
@@ -419,6 +421,8 @@ and open the template in the editor.
 <script src="../static/js/plugins/plugins.js"></script>
 <!-- Active js -->
 <script src="../static/js/active.js"></script>
+<!-- RecipeForm js -->
+<script src="../static/js/recipeForm.js"></script>
 </body>
 
 </html>
