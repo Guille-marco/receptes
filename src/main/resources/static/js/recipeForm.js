@@ -5,11 +5,9 @@ async function postFormDataAsJson({ url, obj }) {
 
     const fetchOptions = {
         method: "POST",
-        /*headers: {
+        headers: {
             "Content-Type": "application/json",
             Accept: "application/json",
-        },*/
-        headers: {
             'Authorization': 'Bearer <token>'
         },
         body: jsonString,
