@@ -10,7 +10,6 @@
 	</parent>
 	<groupId>daw</groupId>
 	<artifactId>receptes</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
 	<name>receptes</name>
 	<description>DAW M12 Receptes</description>
 	<properties>

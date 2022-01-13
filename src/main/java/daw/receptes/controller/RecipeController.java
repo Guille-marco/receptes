@@ -31,13 +31,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 @Controller
 public class RecipeController {
     
-    @GetMapping("/novarecepta")
+    @GetMapping("/novaRecepta")
     public String newRecipe(Model model) {
         model.addAttribute("recipe", new Recipe());
         return "novarecepta";
     }
     
-    @PostMapping("/novarecepta")
+    @PostMapping("/novaRecepta")
     public String recipeSubmit(@ModelAttribute Recipe recipe, Model model, HttpServletRequest request) throws IOException {
         model.addAttribute("recipe", recipe);
         
