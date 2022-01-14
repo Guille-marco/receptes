@@ -41,9 +41,9 @@
     <div class="card">
         <h4 class="text-center">Login</h4>
         <div class="form px-4 pt-5">
-            <form action="#" th:action="@{/login}" th:object="${usuari}" method="post">
-                <input type="text" th:field="*{user}" class="form-control" placeholder="Nom d’usuari"/>
-                <input type="text" th:field="*{pwd}" class="form-control" placeholder="Password"/>
+            <form action="#" th:action="@{/login}"  method="post">
+                <input type="text" th:field="*{usuari.user}" class="form-control" placeholder="Nom d’usuari"/>
+                <input type="text" th:field="*{usuari.pwd}" class="form-control" placeholder="Password"/>
                 <button class="btn btn-dark btn-block" type="submit" value="Submit">Login</button>
             </form>
         </div>

@@ -9,6 +9,7 @@ package daw.receptes.controller;
  *
  * @author guill
  */
+import daw.receptes.models.Usuari;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 
@@ -20,5 +21,26 @@ public class MyController {
     @RequestMapping("/")
     public String index(Model model) {
         return "index";
+    }
+    
+    @RequestMapping("/index.html")
+    public String home(Model model) {
+        return "index";
+    }
+    
+    @RequestMapping("/index")
+    public String inici(Model model) {
+        return "index";
+    }
+    
+    @RequestMapping("/contact.html")
+    public String contact(Model model) {
+        return "contact";
+    }
+    
+    @RequestMapping("/login.html")
+    public String login(Model model) {
+        model.addAttribute("usuari", new Usuari());
+        return "login";
     }
 }

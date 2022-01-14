@@ -12,6 +12,7 @@ package daw.receptes.config;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -37,6 +38,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter{
 	        .antMatchers("/","/index").permitAll()
 	        .antMatchers("/admin*").access("hasRole('ADMIN')")
 	        .antMatchers("/user*").access("hasRole('USER') or hasRole('ADMIN')")
+                .antMatchers(HttpMethod.OPTIONS).permitAll()
+                .antMatchers(HttpMethod.GET).permitAll()
+                .antMatchers(HttpMethod.POST).permitAll()
+                .antMatchers(HttpMethod.PUT).permitAll()
+                .antMatchers(HttpMethod.DELETE).permitAll()
                 //.anyRequest().authenticated()
                 .and()
             /*.formLogin()
