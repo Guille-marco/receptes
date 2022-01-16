@@ -27,6 +27,7 @@ import daw.receptes.models.Usuari;
 import daw.receptes.models.UserDetails;
 import daw.receptes.APIrequests.APIRequests;
 import java.net.URLEncoder;
+import javax.servlet.http.HttpServletRequest;
 
 
 
@@ -124,6 +125,15 @@ public class UserController {
         
     }
     
-    
+    @GetMapping("/logout")
+    public String logout(Model model, HttpServletRequest request, HttpServletResponse response) {
+        
+        Cookie[] cookies = request.getCookies();
+        for (Cookie cookie : cookies) {
+            cookie.setMaxAge(0);
+            response.addCookie(cookie);
+        }
+        return "index";
+    }
     
 }
