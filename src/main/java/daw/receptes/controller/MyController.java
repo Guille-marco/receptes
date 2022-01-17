@@ -9,6 +9,7 @@ package daw.receptes.controller;
  *
  * @author guill
  */
+import daw.receptes.models.Recipe;
 import daw.receptes.models.Usuari;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

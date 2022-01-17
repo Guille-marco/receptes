@@ -41,7 +41,7 @@
         <div class="form px-4 pt-5">
             <form action="#" th:action="@{/registration}" th:object="${userDetails}" method="post">
                 <input type="text" th:field="*{user}" class="form-control" placeholder="Nom d’usuari" required/>
-                <input type="text" th:field="*{pwd}" class="form-control" placeholder="Password" required/>
+                <input type="password" th:field="*{pwd}" class="form-control" placeholder="Contrasenya" required/>
                 <input type="text" th:field="*{email}" class="form-control" placeholder="Email" required/>
                 <input type="hidden" th:field="*{role}" class="form-control"  required/>
                 <input type="hidden" th:field="*{status}" class="form-control"  required/>

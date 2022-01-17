@@ -43,7 +43,7 @@
         <div class="form px-4 pt-5">
             <form action="#" th:action="@{/login}"  method="post">
                 <input type="text" th:field="*{usuari.user}" class="form-control" placeholder="Nom d’usuari"/>
-                <input type="text" th:field="*{usuari.pwd}" class="form-control" placeholder="Password"/>
+                <input type="password" th:field="*{usuari.pwd}" class="form-control" placeholder="Contrasenya"/>
                 <button class="btn btn-dark btn-block" type="submit" value="Submit">Login</button>
             </form>
         </div>

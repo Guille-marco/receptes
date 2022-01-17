@@ -34,7 +34,7 @@ public class RecipeController {
     @GetMapping("/novaRecepta")
     public String newRecipe(Model model) {
         model.addAttribute("recipe", new Recipe());
-        return "novarecepta";
+        return "novaRecepta";
     }
     
     @PostMapping("/novaRecepta")

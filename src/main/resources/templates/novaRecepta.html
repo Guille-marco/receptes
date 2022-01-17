@@ -21,6 +21,7 @@ and open the template in the editor.
 
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/style.css" type="text/css"/>
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css"/>
 
 
 </head>
@@ -57,7 +58,7 @@ and open the template in the editor.
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul>
-                                <li><a href="usuarihome.html">Home</a></li>
+                                <li><a href="usuarihome">Home</a></li>
                                 <li class="cn-dropdown-item has-down"><a href="#">Receptes</a>
                                     <ul class="dropdown">
                                         <li><a href="#">Amanides</a></li>
@@ -77,7 +78,7 @@ and open the template in the editor.
                                         <li><a href="#">Les meves receptes</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="#">Crear Recepta</a></li>
+                                <li><a href="novaRecepta.html">Crear Recepta</a></li>
                             </ul>
 
                             <!-- Log out -->
@@ -108,7 +109,7 @@ and open the template in the editor.
             <div class="col-12">
                 <!-- Contact Form Area -->
                 <div class="mb-70">
-                    <form id="recipe-form" action="https://xxx.xxx.xxx.xxx:8443/api/newRecipe">
+                    <form id="recipe-form" action="/novaRecepta">
                         <!-- Hidden inputs -->
                         <!-- Nom usuari -->
                         <input type="hidden" id="user" value="usuari"/>
@@ -129,43 +130,50 @@ and open the template in the editor.
                                     <small id="descripcioHelp" class="form-text text-muted">La descripció es visualitzarà en les búsquedes de receptes. Ha de ser un text concís i aclaridor.</small>
                                 </div>
                                 <div class="row">
-                                    <div class="form-group col-md-3 ml-15">
-                                        <label class="mr-sm-2" for="categoria">Categoria</label>
-                                        <select class="custom-select mr-sm-2" id="categoria">
-                                            <option selected>Tria...</option>
-                                            <option value="amanides">Amanides</option>
-                                            <option value="verdures">Verdures</option>
-                                            <option value="sopes">Sopes</option>
-                                            <option value="cereals">Cereals</option>
-                                            <option value="llegums">Llegums</option>
-                                            <option value="carns">Carns</option>
-                                            <option value="peixos">Peixos</option>
-                                            <option value="ous">Ous</option>
-                                            <option value="postres">Postres</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-2">
-                                        <label for="temps">Durada</label>
+                                    <div class="form-group col-lg-3 col-md-6 col-sm-12">
                                         <div class="input-group mb-3">
-                                            <input type="number" class="form-control" id="temps" placeholder="durada" aria-label="durada" aria-describedby="basic-addon">
+                                            <select class="form-control nice-select" id="categoria">
+                                                <option selected>Tria...</option>
+                                                <option value="amanides">Amanides</option>
+                                                <option value="verdures">Verdures</option>
+                                                <option value="sopes">Sopes</option>
+                                                <option value="cereals">Cereals</option>
+                                                <option value="llegums">Llegums</option>
+                                                <option value="carns">Carns</option>
+                                                <option value="peixos">Peixos</option>
+                                                <option value="ous">Ous</option>
+                                                <option value="postres">Postres</option>
+                                            </select>
                                             <div class="input-group-append">
-                                                <span class="input-group-text" id="basic-addon">minuts</span>
+                                                <span class="input-group-text" id="basic-addon">Categoria</span>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="dificultat">Dificultat</label>
-                                        <select class="custom-select" id="dificultat">
-                                            <option selected>Tria...</option>
-                                            <option value="facil">Fàcil</option>
-                                            <option value="mitja">Mitja</option>
-                                            <option value="dificil">Difícil</option>
-                                        </select>
-                                    </div>
-                                    <div class="form-group col-md-3">
-                                        <label for="comensals">Número de persones</label>
+                                    <div class="form-group col-lg-3 col-md-6 col-sm-12">
                                         <div class="input-group mb-3">
-                                            <input type="number" class="form-control" id="comensals" placeholder="comensals" aria-label="Número de persones" aria-describedby="basic-addon2">
+                                            <select class="form-control nice-select" id="dificultat">
+                                                <option selected>Tria...</option>
+                                                <option value="facil">Fàcil</option>
+                                                <option value="mitja">Mitja</option>
+                                                <option value="dificil">Difícil</option>
+                                            </select>
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" id="basic-addon">Dificultat</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                                        <div class="input-group mb-3">
+                                            <input type="number" class="form-control" id="temps" placeholder="Temps" aria-label="durada" aria-describedby="basic-addon">
+                                            <div class="input-group-append">
+                                                <span class="input-group-text" id="basic-addon">Minuts</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="form-group col-lg-3 col-md-6 col-sm-12">
+                                        <div class="input-group mb-3">
+                                            <input type="number" class="form-control" id="comensals" placeholder="Comensals" aria-label="Número de persones" aria-describedby="basic-addon2">
                                             <div class="input-group-append">
                                                 <span class="input-group-text" id="basic-addon2">persones</span>
                                             </div>
@@ -198,7 +206,7 @@ and open the template in the editor.
                                     </div>
                                     <div class="form-group col-md-2">
                                         <label for="mesura">Unitat de mesura</label>
-                                        <select id="mesura" class="custom-select">
+                                        <select id="mesura" class="form-control nice-select">
                                             <option selected>gr</option>
                                             <option>ml</option>
                                             <option>u.</option>
@@ -213,7 +221,7 @@ and open the template in the editor.
                                         <input type="number" class="form-control" id="quantitat2">
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <select id="mesura2" class="custom-select">
+                                        <select id="mesura2" class="form-control nice-select">
                                             <option selected>gr</option>
                                             <option>ml</option>
                                             <option>u.</option>
@@ -228,7 +236,7 @@ and open the template in the editor.
                                         <input type="number" class="form-control" id="quantitat3">
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <select id="mesura3" class="custom-select">
+                                        <select id="mesura3" class="form-control nice-select">
                                             <option selected>gr</option>
                                             <option>ml</option>
                                             <option>u.</option>
@@ -243,7 +251,7 @@ and open the template in the editor.
                                         <input type="number" class="form-control" id="quantitat4">
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <select id="mesura4" class="custom-select">
+                                        <select id="mesura4" class="form-control nice-select">
                                             <option selected>gr</option>
                                             <option>ml</option>
                                             <option>u.</option>
@@ -258,7 +266,7 @@ and open the template in the editor.
                                         <input type="number" class="form-control" id="quantitat5">
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <select id="mesura5" class="custom-select">
+                                        <select id="mesura5" class="form-control nice-select">
                                             <option selected>gr</option>
                                             <option>ml</option>
                                             <option>u.</option>
@@ -273,7 +281,7 @@ and open the template in the editor.
                                         <input type="number" class="form-control" id="quantitat6">
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <select id="mesura6" class="custom-select">
+                                        <select id="mesura6" class="form-control nice-select">
                                             <option selected>gr</option>
                                             <option>ml</option>
                                             <option>u.</option>
@@ -288,7 +296,7 @@ and open the template in the editor.
                                         <input type="number" class="form-control" id="quantitat7">
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <select id="mesura7" class="custom-select">
+                                        <select id="mesura7" class="form-control nice-select">
                                             <option selected>gr</option>
                                             <option>ml</option>
                                             <option>u.</option>
@@ -303,7 +311,7 @@ and open the template in the editor.
                                         <input type="number" class="form-control" id="quantitat8">
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <select id="mesura8" class="custom-select">
+                                        <select id="mesura8" class="form-control nice-select">
                                             <option selected>gr</option>
                                             <option>ml</option>
                                             <option>u.</option>
@@ -318,7 +326,7 @@ and open the template in the editor.
                                         <input type="number" class="form-control" id="quantitat9">
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <select id="mesura9" class="custom-select">
+                                        <select id="mesura9" class="form-control nice-select">
                                             <option selected>gr</option>
                                             <option>ml</option>
                                             <option>u.</option>
@@ -333,7 +341,7 @@ and open the template in the editor.
                                         <input type="number" class="form-control" id="quantitat10">
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <select id="mesura10" class="custom-select">
+                                        <select id="mesura10" class="form-control nice-select">
                                             <option selected>gr</option>
                                             <option>ml</option>
                                             <option>u.</option>
@@ -348,7 +356,7 @@ and open the template in the editor.
                                         <input type="number" class="form-control" id="quantitat11">
                                     </div>
                                     <div class="form-group col-md-2">
-                                        <select id="mesura11" class="custom-select">
+                                        <select id="mesura11" class="form-control nice-select">
                                             <option selected>gr</option>
                                             <option>ml</option>
                                             <option>u.</option>
