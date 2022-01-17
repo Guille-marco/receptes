@@ -26,6 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 import daw.receptes.models.Usuari;
 import daw.receptes.models.UserDetails;
 import daw.receptes.APIrequests.APIRequests;
+import daw.receptes.functions.functions_User;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -79,8 +80,16 @@ public class UserController {
             Cookie usernameCookie = new Cookie("username", URLEncoder.encode(usuari.getUser(), "UTF-8"));
             response.addCookie(usernameCookie);
           
-            //Redireccionem a la pàgina d’inici d’usuari
-            return "redirect:/usuarihome";
+            //Mirem si l’usuari és Admin
+            String apiResponseAdmin = APIRequests.newRequest(JSONBody, token, "/userDetails");
+            JSONObject myResponseAdmin = new JSONObject(apiResponseAdmin);
+            
+            //Mostrem una vista pel Admin i una altra pel User
+            if (myResponseAdmin.getString("role").equals("1")) {
+                return "adminHome";
+            } else {
+                return "redirect:/usuarihome";
+            } 
         } else {
             //El login no és vàlid
             return "login_failed";
@@ -128,15 +137,18 @@ public class UserController {
     }
     
     @GetMapping("/profile")
-    public String profile(Model model, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
+    public String profile(Model model, HttpServletRequest request) throws UnsupportedEncodingException, IOException {
         
-        //Agafem el username de la cookie del client
+        //Agafem el username i el token de la cookie del client
         String username = null;
+        String token = null;
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("username")) {
                     username = URLDecoder.decode(cookie.getValue(), "UTF-8");
+                } else if (cookie.getName().equals("token")) {
+                    token = cookie.getValue();
                 }
             }
         }
@@ -145,41 +157,24 @@ public class UserController {
         JSONObject user = new JSONObject();
         user.put("user", username);
         String JSONBody = user.toString();
-        
-        //Capturem el token de la cookie
-        String token = null;
-        if (cookies != null) {
-            for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("token")) {
-                    token = cookie.getValue();
-                }
-            }
-        }
+
         String endpoint = "/userDetails";
         
-        //Fem la petició a l’API; ens respon amb el token
+        //Fem la petició a l’API
         String apiResponse = APIRequests.newRequest(JSONBody, token, endpoint);
         //System.out.println(apiResponse);
         
-        //Per capturar dades de la resposta, hem de passar l’String a JSONObject
-        JSONObject myResponse = new JSONObject(apiResponse);
-        
-        //convertim la resposta en l’objecte userDetais
-        JSONArray myDataResponse = myResponse.getJSONArray("data");
-        
-        for (int i = 0; i < myDataResponse.length(); i++) {
-            JSONObject explrObject = myDataResponse.getJSONObject(i);
-        }
+        //Tractem la resposta
+        UserDetails usuari = functions_User.getUser(apiResponse);
         
         //Afegim les dades de l’usuari a la vista
-        model.addAttribute("userDetails", new UserDetails());
+        model.addAttribute("userDetails", usuari);
         
-
         return "profile";
     }
     
     @PostMapping("/profile")
-    public String editProfile(@ModelAttribute UserDetails userDetails, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
+    public String editProfile(@ModelAttribute UserDetails userDetails, Model model, HttpServletRequest request) throws IOException {
         userDetails.setRole("0");
         model.addAttribute("userDetails", userDetails);
         String JSONBody = new JSONObject(userDetails).toString();
@@ -194,14 +189,12 @@ public class UserController {
                 }
             }
         }
-        String endpoint = "/userDetails";
-        //Fem la petició a l’API; ens respon amb el token
+        String endpoint = "/updateUser";
+        //Fem la petició a l’API
         String apiResponse = APIRequests.newRequest(JSONBody, token, endpoint);
         
         //Per capturar dades de la resposta, hem de passar l’String a JSONObject
         JSONObject myResponse = new JSONObject(apiResponse);
-        //userDetails.setUser(myResponse.getString("username"));
-        //System.out.println(myResponse.get("status"));
 
         //Mostrem una View diferent en funció de la resposta
         if (myResponse.get("status").equals(SUCCESS)) {
