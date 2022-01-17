@@ -14,7 +14,7 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 //@Configuration
-public class MyConfig  {
+public class MyConfig {
     
     //@Override
     public void addViewControllers(ViewControllerRegistry registry)
@@ -23,6 +23,7 @@ public class MyConfig  {
         registry.addViewController("/index.html").setViewName("index");
         registry.addViewController("/recepta.html").setViewName("recepta");
         registry.addViewController("/novaRecepta.html").setViewName("novaRecepta");
+        registry.addViewController("/recipe_failed.html").setViewName("recipe_failed");
         registry.addViewController("/contact.html").setViewName("contact");
         registry.addViewController("/usuarihome.html").setViewName("usuarihome");
         //registry.addViewController("/single-post.html").setViewName("single-post");
@@ -31,5 +32,6 @@ public class MyConfig  {
         registry.addViewController("/login_failed.html").setViewName("login_failed");
         registry.addViewController("/registration_failed.html").setViewName("registration_failed");
         registry.addViewController("/registration.html").setViewName("registration");
+        registry.addViewController("/profile.html").setViewName("profile");
     }
 }

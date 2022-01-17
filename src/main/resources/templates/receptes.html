@@ -1,0 +1,202 @@
+<html lang="en">
+<!DOCTYPE html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- The above 4 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+    <!-- Title -->
+    <title>Receptes - Recull de receptes en català</title>
+
+   
+    <!-- Favicon -->
+    <link rel="icon" href="/img/core-img/favicon.ico">
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="/css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="/css/style.css" type="text/css"/>
+
+</head>
+
+<body>
+<!-- ##### Header Area Start ##### -->
+<header class="header-area">
+
+    <!-- Logo Area -->
+    <div class="logo-area">
+        <a href="usuarihome.html"><img src="/img/logo.png" alt=""></a>
+    </div>
+
+    <!-- Navbar Area -->
+    <div class="bueno-main-menu" id="sticker">
+        <div class="classy-nav-container breakpoint-off">
+            <div class="container">
+                <!-- Menu -->
+                <nav class="classy-navbar justify-content-between" id="buenoNav">
+
+                    <!-- Navbar Toggler -->
+                    <div class="classy-navbar-toggler">
+                        <span class="navbarToggler"><span></span><span></span><span></span></span>
+                    </div>
+
+                    <!-- Menu -->
+                    <div class="classy-menu">
+
+                        <!-- Close Button -->
+                        <div class="classycloseIcon">
+                            <div class="cross-wrap"><span class="top"></span><span class="bottom"></span></div>
+                        </div>
+
+                        <!-- Nav Start -->
+                        <div class="classynav">
+                            <ul>
+                                <li><a href="index.html">Home</a></li>
+                                <li class="cn-dropdown-item has-down"><a href="#">Receptes</a>
+                                    <ul class="dropdown">
+                                        <li><a href="receptes/amanides">Amanides</a></li>
+                                        <li><a href="receptes/verdures">Verdures</a></li>
+                                        <li><a href="receptes/sopes">Sopes</a></li>
+                                        <li><a href="receptes/cereals">Cereals</a></li>
+                                        <li><a href="receptes/llegums">Llegums</a></li>
+                                        <li><a href="receptes/carns">Carns</a></li>
+                                        <li><a href="receptes/peixos">Peixos</a></li>
+                                        <li><a href="receptes/ous">Ous</a></li>
+                                        <li><a href="receptes/postres">Postres</a></li>
+                                    </ul>
+                                </li>
+                                <li class="cn-dropdown-item has-down"><a href="#">Les meves dades</a>
+                                    <ul class="dropdown">
+                                        <li><a href="profile">Perfil d’usuari</a></li>
+                                        <li><a href="#">Receptes meves</a></li>
+                                    </ul>
+                                </li>
+                                <li><a href="novaRecepta">Crear Recepta</a></li>
+                            </ul>
+
+                            <!-- Log out -->
+                            <div class="login-area">
+                                <a href="index">Sortir</a>
+                            </div>
+
+                        </div>
+                        <!-- Nav End -->
+
+                    </div>
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- ##### Header Area End ##### -->
+
+<!-- ##### Search Area Start ##### -->
+<div class="bueno-search-area section-padding-50-0 pb-30 bg-img" style="background-image: url(img/core-img/pattern.png);">
+    <div class="container">
+        <div class="row">
+            <div class="col-12 mb-15">
+                <h4 class="text-center">Troba la recepta que estàs buscant</h4>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div class="row">
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div class="form-group mb-30">
+                            <form class="form-inline" action="#" th:action="@{/recipesByName}" th:object="${recipe}" method="post" enctype="multipart/form-data">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Buscar per nom" aria-label="Search" th:field="*{name}">
+                                <button class="btn btn-receptes my-2 my-sm-0" type="submit">Buscar</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div class="form-group mb-30">
+                            <form class="form-inline" action="#" th:action="@{/recipesByIngredient}" th:object="${recipe}" method="post" enctype="multipart/form-data">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Buscar per ingredients" aria-label="Search" th:field="*{ingredients}">
+                                <button class="btn btn-receptes my-2 my-sm-0" type="submit">Buscar</button>
+                            </form>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-sm-6 col-lg-4">
+                        <div class="form-group mb-30">
+                            <form class="form-inline" action="#" th:action="@{/recipesByAuthor}" th:object="${recipe}" method="post" enctype="multipart/form-data">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Buscar per autor" aria-label="Search" th:field="*{user}">
+                                <button class="btn btn-receptes my-2 my-sm-0" type="submit">Buscar</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Search Area End ##### -->
+
+<!-- ##### Posts Area Start ##### -->
+<div class="mb-70 section-padding-100">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-12 mb-50">
+                <h4 class="text-center mb-15">Receptes més recents</h4>
+                <hr style="width:15%; margin: auto; ">          
+            </div>
+            
+            <!-- Post Area -->
+            <th:block th:each="recipe : ${recipes}">
+            <div class="col-12">
+                <!-- Single Blog Post -->
+                <div class="single-blog-post style-1 d-flex flex-wrap mb-30">
+                    <!-- Blog Thumbnail -->
+                    <div class="blog-thumbnail">
+                        <img src="img/bg-img/9.png" alt="">
+                    </div>
+                    <!-- Blog Content -->
+                    <div class="blog-content">
+                        <a th:href="@{/recepta/{name}(name=${recipe.name})}" class="post-title" th:text = "${recipe.name}">Friend eggs with ham</a>
+                        <div class="post-meta">
+                            <a href="#" class="post-author" th:text = "${recipe.user}">By Julia Stiles</a>
+                        </div>
+                        <p th:text = "${recipe.description}">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc tristique justo id elit bibendum pharetra non vitae lectus. Mauris libero felis, dapibus a ultrices sed, commodo vitae odio. Sed auctor tellus quis arcu tempus.</p>
+                    </div>
+                </div>
+            </th:block>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ##### Posts Area End ##### -->
+
+<!-- ##### Footer Area Start ##### -->
+<footer class="footer-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <!-- Copywrite Text -->
+                <p class="copywrite-text"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> Tots els drets reservats
+                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- ##### Footer Area End ##### -->
+
+<!-- ##### All Javascript Script ##### -->
+<!-- jQuery-2.2.4 js -->
+<script src="/js/jquery/jquery-2.2.4.min.js"></script>
+<!-- Popper js -->
+<script src="/js/bootstrap/popper.min.js"></script>
+<!-- Bootstrap js -->
+<script src="/js/bootstrap/bootstrap.min.js"></script>
+<!-- All Plugins js -->
+<script src="/js/plugins/plugins.js"></script>
+<!-- Active js -->
+<script src="/js/plugins/active.js"></script>
+</body>
+
+</html>
