@@ -26,6 +26,8 @@ import javax.servlet.http.HttpServletResponse;
 import daw.receptes.models.Usuari;
 import daw.receptes.models.UserDetails;
 import daw.receptes.APIrequests.APIRequests;
+import java.io.UnsupportedEncodingException;
+import java.net.URLDecoder;
 import java.net.URLEncoder;
 import javax.servlet.http.HttpServletRequest;
 
@@ -86,12 +88,12 @@ public class UserController {
       
     }
     
-    @GetMapping("/usuarihome")
-    public String usuariHome(Model model) {
-        return "usuarihome";
+    @GetMapping("/login_failed")
+    public String login_failed(Model model) {
+        return "login_failed";
     }
-  
     
+   
     @GetMapping("/registration")
     public String registrationForm(Model model) {
         model.addAttribute("userDetails", new UserDetails());
@@ -125,15 +127,89 @@ public class UserController {
         
     }
     
-    @GetMapping("/logout")
-    public String logout(Model model, HttpServletRequest request, HttpServletResponse response) {
+    @GetMapping("/profile")
+    public String profile(Model model, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException, IOException {
         
+        //Agafem el username de la cookie del client
+        String username = null;
         Cookie[] cookies = request.getCookies();
-        for (Cookie cookie : cookies) {
-            cookie.setMaxAge(0);
-            response.addCookie(cookie);
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("username")) {
+                    username = URLDecoder.decode(cookie.getValue(), "UTF-8");
+                }
+            }
         }
-        return "index";
+
+        //Creem el JSONObject amb el nom d’usuari
+        JSONObject user = new JSONObject();
+        user.put("user", username);
+        String JSONBody = user.toString();
+        
+        //Capturem el token de la cookie
+        String token = null;
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("token")) {
+                    token = cookie.getValue();
+                }
+            }
+        }
+        String endpoint = "/userDetails";
+        
+        //Fem la petició a l’API; ens respon amb el token
+        String apiResponse = APIRequests.newRequest(JSONBody, token, endpoint);
+        //System.out.println(apiResponse);
+        
+        //Per capturar dades de la resposta, hem de passar l’String a JSONObject
+        JSONObject myResponse = new JSONObject(apiResponse);
+        
+        //convertim la resposta en l’objecte userDetais
+        JSONArray myDataResponse = myResponse.getJSONArray("data");
+        
+        for (int i = 0; i < myDataResponse.length(); i++) {
+            JSONObject explrObject = myDataResponse.getJSONObject(i);
+        }
+        
+        //Afegim les dades de l’usuari a la vista
+        model.addAttribute("userDetails", new UserDetails());
+        
+
+        return "profile";
+    }
+    
+    @PostMapping("/profile")
+    public String editProfile(@ModelAttribute UserDetails userDetails, Model model, HttpServletRequest request, HttpServletResponse response) throws IOException {
+        userDetails.setRole("0");
+        model.addAttribute("userDetails", userDetails);
+        String JSONBody = new JSONObject(userDetails).toString();
+                      
+        //Capturem el token de la cookie
+        String token = null;
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("token")) {
+                    token = cookie.getValue();
+                }
+            }
+        }
+        String endpoint = "/userDetails";
+        //Fem la petició a l’API; ens respon amb el token
+        String apiResponse = APIRequests.newRequest(JSONBody, token, endpoint);
+        
+        //Per capturar dades de la resposta, hem de passar l’String a JSONObject
+        JSONObject myResponse = new JSONObject(apiResponse);
+        //userDetails.setUser(myResponse.getString("username"));
+        //System.out.println(myResponse.get("status"));
+
+        //Mostrem una View diferent en funció de la resposta
+        if (myResponse.get("status").equals(SUCCESS)) {
+            return "result";
+        } else {
+            return "result2";
+        }
+        
     }
     
 }
