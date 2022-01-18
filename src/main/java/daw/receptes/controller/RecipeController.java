@@ -385,5 +385,41 @@ public class RecipeController {
 
     }
     
+    @PostMapping("/deleteRecipe")
+    public String deleteRecipe(@ModelAttribute Output_Recipe recipe, Model model, HttpServletRequest request) throws IOException {
+        model.addAttribute("recipe", recipe);
+        
+        //Agafem el username i el token de la cookie del client
+        String username = null;
+        String token = null;
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("username")) {
+                    username = URLDecoder.decode(cookie.getValue(), "UTF-8");
+                }
+                else if (cookie.getName().equals("token")) {
+                    token = cookie.getValue();
+                }
+            }
+        }
+        
+        //Creem el JSONObject amb la recepta a esborrar
+        JSONObject deletedRecipe = new JSONObject();
+        deletedRecipe.put("name", recipe.getName());
+        deletedRecipe.put("user", username);
+        
+        String JSONBody = deletedRecipe.toString();
+        String endpoint = "/deleteRecipe";
     
+        //Fem la petició
+        String apiResponse = APIRequests.newRequest(JSONBody, token, endpoint);
+        JSONObject myResponse = new JSONObject(apiResponse);
+        
+        if (myResponse.get("status").equals(SUCCESS)) {
+            return "myRecipes";
+        } else {
+            return "result2";
+        }
+    }
 }

@@ -27,9 +27,11 @@ import daw.receptes.models.Usuari;
 import daw.receptes.models.UserDetails;
 import daw.receptes.APIrequests.APIRequests;
 import daw.receptes.functions.functions_User;
+import daw.receptes.models.UserListContainer;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
+import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 
 
@@ -203,6 +205,43 @@ public class UserController {
             return "result2";
         }
         
+    }
+    
+    @GetMapping("/llistatUsuaris")
+    public String getUsers(Model model, HttpServletRequest request) throws IOException {          
+        
+        //Agafem el username i el token de la cookie del client
+        String username = null;
+        String token = null;
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("username")) {
+                    username = URLDecoder.decode(cookie.getValue(), "UTF-8");
+                }
+                else if (cookie.getName().equals("token")) {
+                    token = cookie.getValue();
+                }
+            }
+        }
+        //Hem de passar el role d’usuari quan fem la petició
+        JSONObject user = new JSONObject().put("user", username);
+        user.put("role", "0");
+        String JSONBody = user.toString();
+        String endpoint = "/usersList";
+        
+        //Fem la petició a l’API
+        String apiResponse = APIRequests.newRequest(JSONBody, token, endpoint);
+        
+        //Tractem la resposta
+        ArrayList <UserDetails> users = functions_User.getUsersList(apiResponse);
+                      
+        //Afegim els usuaris a la vista
+        UserListContainer usersList = new UserListContainer();
+        usersList.setUsers(users);
+        model.addAttribute("users", usersList);
+               
+        return "llistatUusaris";
     }
     
 }

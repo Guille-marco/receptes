@@ -7,6 +7,8 @@ package daw.receptes.functions;
 
 import daw.receptes.models.Output_Recipe;
 import daw.receptes.models.UserDetails;
+import java.util.ArrayList;
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 /**
@@ -28,6 +30,24 @@ public class functions_User {
         user.setStatus((String) jsnobject.get("status"));
         
         return user;
+    }
+    
+    public static ArrayList <UserDetails> getUsersList (String apiResponse) {
+        //Creem la llista que guardarà les receptes
+        ArrayList<UserDetails> list = new ArrayList<>();
+        //Convertim l’string de resposta en un JSONObject
+        JSONObject jsnobject = new JSONObject(apiResponse);
+        //I agafem l’array amb les receptes de dins el JSONObject
+        JSONArray jsonArray = jsnobject.getJSONArray("users");
+        
+        if (jsonArray != null) {
+            for (int i = 0; i < jsonArray.length(); i++) {
+                list.add((UserDetails) jsonArray.get(i));
+            }
+        }
+
+        return list;
+
     }
     
 }
