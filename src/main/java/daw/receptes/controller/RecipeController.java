@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import daw.receptes.models.Product;
 import daw.receptes.models.Input_Recipe;
 import daw.receptes.models.Output_Recipe;
+import daw.receptes.models.Recipe;
 import daw.receptes.models.RecipeListContainer;
 import java.io.IOException;
 import java.net.URLDecoder;
@@ -40,7 +41,7 @@ public class RecipeController {
     @GetMapping("/novaRecepta")
     public String newRecipe(Model model) {
         model.addAttribute("recipe", new Input_Recipe());
-        return "novarecepta";
+        return "novaRecepta";
     }
     
     @PostMapping("/novaRecepta")
@@ -113,11 +114,18 @@ public class RecipeController {
     }
     
     @GetMapping("/receptes")
-    public String recipes(Model model, HttpServletRequest request) {
-        model.addAttribute("recipe", new Output_Recipe());
-        
-        
-        return "novarecepta";
+    public String recipes(@ModelAttribute RecipeListContainer recipes, @ModelAttribute String titol, Model model) {
+        model.addAttribute("recipes", recipes);
+        model.addAttribute("titol", titol);
+            
+        return "receptes";
+    }
+    
+    @GetMapping("/recepta")
+    public String recipe(@ModelAttribute Recipe recipe, Model model) {
+        model.addAttribute("recipe", recipe);
+            
+        return "recepta";
     }
     
     @GetMapping("/receptes/{category}")
@@ -125,17 +133,23 @@ public class RecipeController {
                 
         
         //Agafem el username i el token de la cookie del client
+        String username = null;
         String token = null;
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("token")) {
+                if (cookie.getName().equals("username")) {
+                    username = URLDecoder.decode(cookie.getValue(), "UTF-8");
+                }
+                else if (cookie.getName().equals("token")) {
                     token = cookie.getValue();
                 }
             }
         }
+
+        JSONObject user = new JSONObject().put("user", username);
+        String JSONBody = user.toString();
         String endpoint = "/recipesList";
-        String JSONBody = new JSONObject().toString();
         
         //Fem la petició a l’API
         String apiResponse = APIRequests.newRequest(JSONBody, token, endpoint);
@@ -151,6 +165,10 @@ public class RecipeController {
         RecipeListContainer recipesList = new RecipeListContainer();
         recipesList.setRecipes(receptesFiltrades);
         model.addAttribute("recipes", recipesList);
+        
+        //Afegim el títol de la vista de receptes
+        String titol = "Receptes per categoria: " + category;
+        model.addAttribute("titol", titol);
         
         return "receptes";
     }
@@ -191,19 +209,25 @@ public class RecipeController {
     @PostMapping("/recipesByName")
     public String recipeByName(@ModelAttribute Input_Recipe recipe, Model model, HttpServletRequest request) throws IOException {
                  
-        //Agafem el token de la cookie del client
+        //Agafem el username i el token de la cookie del client
+        String username = null;
         String token = null;
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("token")) {
+                if (cookie.getName().equals("username")) {
+                    username = URLDecoder.decode(cookie.getValue(), "UTF-8");
+                }
+                else if (cookie.getName().equals("token")) {
                     token = cookie.getValue();
                 }
             }
         }
+
+        JSONObject user = new JSONObject().put("user", username);
+        String JSONBody = user.toString();
         
         String endpoint = "/recipesList";
-        String JSONBody = new JSONObject().toString();
         
         //Fem la petició a l’API
         String apiResponse = APIRequests.newRequest(JSONBody, token, endpoint);
@@ -220,6 +244,10 @@ public class RecipeController {
         recipesList.setRecipes(recipesByName);
         model.addAttribute("recipes", recipesList);
         
+        //Afegim el títol de la vista de receptes
+        String titol = "Receptes filtrades pel nom: " + nomRecepta;
+        model.addAttribute("titol", titol);
+        
         return "receptes";
 
     }
@@ -227,21 +255,27 @@ public class RecipeController {
     @PostMapping("/recipesByAuthor")
     public String recipeByAuthor(@ModelAttribute Input_Recipe recipe, Model model, HttpServletRequest request) throws IOException {
                  
-        //Agafem el token de la cookie del client
+        //Agafem el username i el token de la cookie del client
+        String username = null;
         String token = null;
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("token")) {
+                if (cookie.getName().equals("username")) {
+                    username = URLDecoder.decode(cookie.getValue(), "UTF-8");
+                }
+                else if (cookie.getName().equals("token")) {
                     token = cookie.getValue();
                 }
             }
         }
+        //Request per obtenir detalls de l’usuari
+        JSONObject user = new JSONObject();
+        user.put("user", username);     
+        String JSONBody = user.toString();
         
+        //Fem la petició de llistat receptes
         String endpoint = "/recipesList";
-        String JSONBody = new JSONObject().toString();
-        
-        //Fem la petició a l’API
         String apiResponse = APIRequests.newRequest(JSONBody, token, endpoint);
         
         //Tractem la resposta
@@ -256,6 +290,10 @@ public class RecipeController {
         recipesList.setRecipes(recipesByAuthor);
         model.addAttribute("recipes", recipesList);
         
+        //Afegim el títol de la vista de receptes
+        String titol = "Receptes filtrades per l’autor: " + author;
+        model.addAttribute("titol", titol);
+        
         return "receptes";
 
     }
@@ -264,19 +302,25 @@ public class RecipeController {
     @PostMapping("/recipesByIngredient")
     public String recipeByIngredient(@ModelAttribute Input_Recipe recipe, Model model, HttpServletRequest request) throws IOException {
                  
-        //Agafem el token de la cookie del client
+        //Agafem el username i el token de la cookie del client
+        String username = null;
         String token = null;
         Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
-                if (cookie.getName().equals("token")) {
+                if (cookie.getName().equals("username")) {
+                    username = URLDecoder.decode(cookie.getValue(), "UTF-8");
+                }
+                else if (cookie.getName().equals("token")) {
                     token = cookie.getValue();
                 }
             }
         }
+
+        JSONObject user = new JSONObject().put("user", username);
+        String JSONBody = user.toString();
         
         String endpoint = "/recipesList";
-        String JSONBody = new JSONObject().toString();
         
         //Fem la petició a l’API
         String apiResponse = APIRequests.newRequest(JSONBody, token, endpoint);
@@ -293,9 +337,89 @@ public class RecipeController {
         recipesList.setRecipes(recipesByIngredient);
         model.addAttribute("recipes", recipesList);
         
+        //Afegim el títol de la vista de receptes
+        String titol = "Receptes filtrades per l’ingredient: " + ingredient;
+        model.addAttribute("titol", titol);
+        
         return "receptes";
 
     }
     
+    @GetMapping("/myRecipes")
+    public String myRecipes(Model model, HttpServletRequest request) throws IOException {
+                 
+        //Agafem el username i el token de la cookie del client
+        String username = null;
+        String token = null;
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("username")) {
+                    username = URLDecoder.decode(cookie.getValue(), "UTF-8");
+                }
+                else if (cookie.getName().equals("token")) {
+                    token = cookie.getValue();
+                }
+            }
+        }
+        //Request per obtenir detalls de l’usuari
+        JSONObject user = new JSONObject().put("user", username);
+        String JSONBody = user.toString();
+        
+        //Fem la petició de llistat receptes
+        String endpoint = "/recipesList";
+        String apiResponse = APIRequests.newRequest(JSONBody, token, endpoint);
+        
+        //Tractem la resposta
+        ArrayList <Output_Recipe> receptes = functions_Recipe.getRecipesList(apiResponse);
+        
+        //Busquem les receptes de l’usuari
+        ArrayList <Output_Recipe> myRecipes = functions_Recipe.recipesByAuthor(receptes, username);
+        
+        //Afegim les receptes a la vista
+        RecipeListContainer recipesList = new RecipeListContainer();
+        recipesList.setRecipes(myRecipes);
+        model.addAttribute("recipes", recipesList);
+        
+        return "myRecipes";
+
+    }
     
+    @PostMapping("/deleteRecipe")
+    public String deleteRecipe(@ModelAttribute Output_Recipe recipe, Model model, HttpServletRequest request) throws IOException {
+        model.addAttribute("recipe", recipe);
+        
+        //Agafem el username i el token de la cookie del client
+        String username = null;
+        String token = null;
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("username")) {
+                    username = URLDecoder.decode(cookie.getValue(), "UTF-8");
+                }
+                else if (cookie.getName().equals("token")) {
+                    token = cookie.getValue();
+                }
+            }
+        }
+        
+        //Creem el JSONObject amb la recepta a esborrar
+        JSONObject deletedRecipe = new JSONObject();
+        deletedRecipe.put("name", recipe.getName());
+        deletedRecipe.put("user", username);
+        
+        String JSONBody = deletedRecipe.toString();
+        String endpoint = "/deleteRecipe";
+    
+        //Fem la petició
+        String apiResponse = APIRequests.newRequest(JSONBody, token, endpoint);
+        JSONObject myResponse = new JSONObject(apiResponse);
+        
+        if (myResponse.get("status").equals(SUCCESS)) {
+            return "myRecipes";
+        } else {
+            return "result2";
+        }
+    }
 }

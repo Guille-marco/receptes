@@ -88,38 +88,5 @@ public class APIRequests {
         return response;
     
     }
-    
-    public static String userDetailsRequest (String JSONBody, String token) throws IOException{
-        
-        String response="";
-        
-        try {
-            URL url = new URL(API_URL + "/userDetails");
-            HttpURLConnection conn = (HttpURLConnection)url.openConnection();
-            conn.setRequestMethod("POST");
-            conn.setRequestProperty("Accept", "application/json");
-            conn.setRequestProperty("Content-Type", "application/json; charset=UTF-8");
-            conn.setRequestProperty("Authorization", "Bearer " + token);
-            conn.setDoOutput(true);
-            conn.setDoInput(true);
-            
-            //Passem el JSONBody
-            OutputStream os = conn.getOutputStream();
-            os.write(JSONBody.getBytes("UTF-8"));
-            os.close();
-            
-            //Llegim la resposta
-            InputStream in = new BufferedInputStream(conn.getInputStream());
-            response = IOUtils.toString(in, "UTF-8");
-            in.close();
-            conn.disconnect();
-    
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        
-        return response;
-    
-    }
      
 }

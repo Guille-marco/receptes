@@ -27,7 +27,7 @@
 
     <!-- Logo Area -->
     <div class="logo-area">
-        <a href="usuarihome.html"><img src="img/logo.png" alt="logo del lloc web Receptes"></a>
+        <a href="usuarihome"><img src="img/logo.png" alt="logo del lloc web Receptes"></a>
     </div>
 
     <!-- Navbar Area -->
@@ -53,27 +53,27 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul>
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="#">Home</a></li>
                                 <li class="cn-dropdown-item has-down"><a href="#">Receptes</a>
                                     <ul class="dropdown">
-                                        <li><a href="#">Amanides</a></li>
-                                        <li><a href="#">Verdures</a></li>
-                                        <li><a href="#">Sopes</a></li>
-                                        <li><a href="#">Cereals</a></li>
-                                        <li><a href="#">Llegums</a></li>
-                                        <li><a href="#">Carns</a></li>
-                                        <li><a href="#">Peixos</a></li>
-                                        <li><a href="#">Ous</a></li>
-                                        <li><a href="#">Postres</a></li>
+                                        <li><a href="receptes/amanides">Amanides</a></li>
+                                        <li><a href="receptes/verdures">Verdures</a></li>
+                                        <li><a href="receptes/sopes">Sopes</a></li>
+                                        <li><a href="receptes/cereals">Cereals</a></li>
+                                        <li><a href="receptes/llegums">Llegums</a></li>
+                                        <li><a href="receptes/carns">Carns</a></li>
+                                        <li><a href="receptes/peixos">Peixos</a></li>
+                                        <li><a href="receptes/ous">Ous</a></li>
+                                        <li><a href="receptes/postres">Postres</a></li>
                                     </ul>
                                 </li>
                                 <li class="cn-dropdown-item has-down"><a href="#">Les meves dades</a>
                                     <ul class="dropdown">
-                                        <li><a href="#">Perfil d’usuari</a></li>
-                                        <li><a href="#">Les meves receptes</a></li>
+                                        <li><a href="profile">Perfil d’usuari</a></li>
+                                        <li><a href="myRecipes">Les meves receptes</a></li>
                                     </ul>
                                 </li>
-                                <li><a href="novaRecepta.html">Crear Recepta</a></li>
+                                <li><a href="novaRecepta">Crear Recepta</a></li>
                             </ul>
 
                             <!-- Log out -->
@@ -105,8 +105,8 @@
                 <div class="row">
                     <div class="col-12 col-sm-6 col-lg-4">
                         <div class="form-group mb-30">
-                            <form class="form-inline" action="#" method="post">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Buscar per nom" aria-label="Search">
+                            <form class="form-inline" action="#" th:action="@{/recipesByName}" th:object="${recipe}" method="post" enctype="multipart/form-data">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Buscar per nom" aria-label="Search" th:field="*{name}">
                                 <button class="btn btn-receptes my-2 my-sm-0" type="submit">Buscar</button>
                             </form>
                         </div>
@@ -114,8 +114,8 @@
 
                     <div class="col-12 col-sm-6 col-lg-4">
                         <div class="form-group mb-30">
-                            <form class="form-inline" action="#" method="post">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Buscar per ingredients" aria-label="Search">
+                            <form class="form-inline" action="#" th:action="@{/recipesByIngredient}" th:object="${recipe}" method="post" enctype="multipart/form-data">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Buscar per ingredients" aria-label="Search" th:field="*{ingredients}">
                                 <button class="btn btn-receptes my-2 my-sm-0" type="submit">Buscar</button>
                             </form>
                         </div>
@@ -123,8 +123,8 @@
 
                     <div class="col-12 col-sm-6 col-lg-4">
                         <div class="form-group mb-30">
-                            <form class="form-inline" action="#" method="post">
-                                <input class="form-control mr-sm-2" type="search" placeholder="Buscar per autor" aria-label="Search">
+                            <form class="form-inline" action="#" th:action="@{/recipesByAuthor}" th:object="${recipe}" method="post" enctype="multipart/form-data">
+                                <input class="form-control mr-sm-2" type="search" placeholder="Buscar per autor" aria-label="Search" th:field="*{user}">
                                 <button class="btn btn-receptes my-2 my-sm-0" type="submit">Buscar</button>
                             </form>
                         </div>
