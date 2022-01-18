@@ -5,6 +5,9 @@
  */
 package daw.receptes.controller;
 
+import daw.receptes.models.Input_Recipe;
+import daw.receptes.models.Product;
+import daw.receptes.models.Usuari;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -19,6 +22,9 @@ public class AppController {
     
     @GetMapping("/usuarihome")
     public String usuariHome(Model model) {
+        model.addAttribute("usuari", new Usuari());
+        model.addAttribute("Recipe", new Input_Recipe());
+        
         return "usuarihome";
     }
     

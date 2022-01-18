@@ -40,13 +40,14 @@ public class RecipeController {
     
     @GetMapping("/novaRecepta")
     public String newRecipe(Model model) {
-        model.addAttribute("recipe", new Input_Recipe());
+        model.addAttribute("Recipe", new Input_Recipe());
+        model.addAttribute("Product", new Product());
         return "novaRecepta";
     }
     
     @PostMapping("/novaRecepta")
     public String recipeSubmit(@ModelAttribute Input_Recipe recipe, Model model, HttpServletRequest request) throws IOException {
-        model.addAttribute("recipe", recipe);
+        model.addAttribute("Recipe", recipe);
         
         //Passem els ingredients en un JSONArray
         String [] ingredients = recipe.getIngredients().split(",");

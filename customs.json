@@ -1,8 +1,10 @@
 {
     "elements": {},
     "attributes": {
+        "th:action": {},
         "th:fragment": {
             "context": "header"
-        }
+        },
+        "th:field": {}
     }
 }

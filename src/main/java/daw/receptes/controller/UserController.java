@@ -26,6 +26,7 @@ import javax.servlet.http.HttpServletResponse;
 import daw.receptes.models.Usuari;
 import daw.receptes.models.UserDetails;
 import daw.receptes.APIrequests.APIRequests;
+import daw.receptes.models.Input_Recipe;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
@@ -43,11 +44,12 @@ public class UserController {
         model.addAttribute("usuari", new Usuari());
         return "login";
     }
-
+    
     
     @PostMapping("/login")
     public String loginSubmit(@ModelAttribute("usuari") Usuari usuari, Model model, HttpServletResponse response) throws IOException {
         model.addAttribute("usuari", new Usuari());
+        model.addAttribute("recipe", new Input_Recipe());
 
         String JSONBody = new JSONObject(usuari).toString();
         //System.out.println(JSONBody);

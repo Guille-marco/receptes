@@ -22,6 +22,7 @@ and open the template in the editor.
     <!-- Stylesheet -->
     <link rel="stylesheet" href="css/style.css" type="text/css"/>
     <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css"/>
+    <link rel="stylesheet" href="css/nice-select.css" type="text/css"/>
 
 
 
@@ -127,9 +128,8 @@ and open the template in the editor.
                                 </div>
                                 <div class="row">
                                     <div class="form-group col-md-6 ml-15">
-                                        <label class="mr-sm-2" for="categoria">Categoria</label>
-                                        <select class="custom-select mr-sm-2" th:field="*{Recipe.category}" id="categoria">
-                                            <option disabled selected>Tria...</option>
+                                        <select class="form-control nice-select" th:field="*{Recipe.category}" id="categoria">
+                                            <option th:value="''" selected>Tria...</option>
                                             <option th:value="'amanides'" th:text="Amanides"></option>
                                             <option th:value="'verdures'" th:text="Verdures"></option>
                                             <option th:value="'sopes'" th:text="Sopes"></option>
@@ -140,6 +140,9 @@ and open the template in the editor.
                                             <option th:value="ous" th:text="Ous"></option>
                                             <option th:value="postres" th:text="Postres"></option>
                                         </select>
+                                        <div class="input-group-append">
+                                                <span class="input-group-text" id="basic-addon">Tria la Categoria</span>
+                                            </div>
                                     </div>
                                     <!--
                                     <div class="form-group col-md-2">
@@ -303,24 +306,24 @@ and open the template in the editor.
                                 <h6 class="mb-15">Pasos per fer la recepta</h6>
                                 <div class="form-group ml-15">
                                     <label for="pas1">Pas 1</label>
-                                    <textarea th:field="Recipe.steps" name="pas1" class="form-control" id="pas1" cols="30" rows="10" aria-describedby="pas1Help" placeholder="Descripció del primer pas per fer la recepta"></textarea>
+                                    <textarea th:text="*{Recipe.step1}" name="pas1" class="form-control" id="pas1" cols="30" rows="10" aria-describedby="pas1Help" placeholder="Descripció del primer pas per fer la recepta"></textarea>
                                     <small id="pas1Help" class="form-text text-muted">La recepta s’ha d’explicar en un màxim de 5 possibles pasos. Cada pas ha de desciure una part del procés.</small>
                                 </div>
                                 <div class="form-group ml-15">
                                     <label for="pas2">Pas 2</label>
-                                    <textarea th:field="Recipe.steps" name="pas2" class="form-control" id="pas2" cols="30" rows="10" placeholder="Descripció del segon pas per fer la recepta"></textarea>
+                                    <textarea th:text="*{Recipe.step2}" name="pas2" class="form-control" id="pas2" cols="30" rows="10" placeholder="Descripció del segon pas per fer la recepta"></textarea>
                                 </div>
                                 <div class="form-group ml-15">
                                     <label for="pas3">Pas 3</label>
-                                    <textarea th:field="Recipe.steps" name="pas1" class="form-control" id="pas3" cols="30" rows="10" placeholder="Descripció del tercer pas per fer la recepta"></textarea>
+                                    <textarea th:text="*{Recipe.step3}" name="pas1" class="form-control" id="pas3" cols="30" rows="10" placeholder="Descripció del tercer pas per fer la recepta"></textarea>
                                 </div>
                                 <div class="form-group ml-15">
                                     <label for="pas4">Pas 4</label>
-                                    <textarea th:field="Recipe.steps" name="pas1" class="form-control" id="pas4" cols="30" rows="10" placeholder="Descripció del quart pas per fer la recepta"></textarea>
+                                    <textarea th:text="*{Recipe.step4}" name="pas1" class="form-control" id="pas4" cols="30" rows="10" placeholder="Descripció del quart pas per fer la recepta"></textarea>
                                 </div>
                                 <div class="form-group ml-15">
                                     <label for="pas5">Pas 5</label>
-                                    <textarea th:field="Recipe.steps" name="pas1" class="form-control" id="pas5" cols="30" rows="10" placeholder="Descripció del cinquè pas per fer la recepta"></textarea>
+                                    <textarea th:text="*{Recipe.step5}" name="pas1" class="form-control" id="pas5" cols="30" rows="10" placeholder="Descripció del cinquè pas per fer la recepta"></textarea>
                                 </div>
                             </div>
 
