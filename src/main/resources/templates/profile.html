@@ -29,7 +29,7 @@
 
     <!-- Logo Area -->
     <div class="logo-area">
-        <a href="index.html"><img src="img/logo.png" alt=""/></a>
+        <a href="usuarihome"><img src="img/logo.png" alt=""/></a>
     </div>
 
 </header>
@@ -40,11 +40,11 @@
     <div class="card">
         <h4 class="text-center">Dades de perfil</h4>
         <div class="px-4 pt-5">
-            <p>Nom d’usuari: ${user}</p>
-            <p>Contrasenya: ${pwd}</p>
-            <p>Email: ${email}</p>
-            <p>Role: ${role}</p>
-            <p>Status: ${status}</p>           
+            <p>Nom d’usuari: </p><p th:text="${user}"></p><br>
+            <p>Contrasenya: </p><p th:text="${pwd}"></p><br>
+            <p>Email: </p><p th:text="${email}"></p><br>
+            <p>Role: </p><p th:text="${role}"></p><br>
+            <p>Status: </p><p th:text="${status}"></p><br>       
         </div>
     </div>
     

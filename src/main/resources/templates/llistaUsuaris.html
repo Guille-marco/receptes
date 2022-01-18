@@ -27,7 +27,7 @@
 
     <!-- Logo Area -->
     <div class="logo-area">
-        <a href="adminHome.html"><img src="img/logo.png" alt="logo del lloc web Receptes"></a>
+        <a href="adminHome"><img src="img/logo.png" alt="logo del lloc web Receptes"></a>
     </div>
 
     <!-- Navbar Area -->
@@ -53,18 +53,18 @@
                         <!-- Nav Start -->
                         <div class="classynav">
                             <ul>
-                                <li><a href="index.html">Home</a></li>
+                                <li><a href="adminHome">Home</a></li>
                                 <li class="cn-dropdown-item has-down"><a href="#">Receptes</a>
                                     <ul class="dropdown">
-                                        <li><a href="#">Amanides</a></li>
-                                        <li><a href="#">Verdures</a></li>
-                                        <li><a href="#">Sopes</a></li>
-                                        <li><a href="#">Cereals</a></li>
-                                        <li><a href="#">Llegums</a></li>
-                                        <li><a href="#">Carns</a></li>
-                                        <li><a href="#">Peixos</a></li>
-                                        <li><a href="#">Ous</a></li>
-                                        <li><a href="#">Postres</a></li>
+                                        <li><a href="receptes/amanides">Amanides</a></li>
+                                        <li><a href="receptes/verdures">Verdures</a></li>
+                                        <li><a href="receptes/sopes">Sopes</a></li>
+                                        <li><a href="receptes/cereals">Cereals</a></li>
+                                        <li><a href="receptes/llegums">Llegums</a></li>
+                                        <li><a href="receptes/carns">Carns</a></li>
+                                        <li><a href="receptes/peixos">Peixos</a></li>
+                                        <li><a href="receptes/ous">Ous</a></li>
+                                        <li><a href="receptes/postres">Postres</a></li>
                                     </ul>
                                 </li>
                                 <li class="cn-dropdown-item has-down"><a href="#">Les meves dades</a>
@@ -116,8 +116,8 @@
                         <p>Rol: </p><p th:text="${user.role}"></p><br>
                         <p>Status: </p><p th:text="${user.status}"></p><br>
                     <!-- Delete & Update Buttons -->
-                    <form action="#" th:action="@{/user/edit}"  method="post" th:object="${user}">
-                         <button class="btn btn-dark btn-block" type="submit" name="action" value="delete">Esborra Usuari</button>
+                    <form action="#" th:action="@{/updateUser}"  method="post" th:object="${user}">
+                         <button class="btn btn-dark btn-block" type="submit" name="action" value="delete" th:formaction="@{/deleteUser}">Esborra Usuari</button>
                          <button class="btn btn-dark btn-block" type="submit" name="action" value="update">Edita Usuari</button>
                     </form>
                 </div>

@@ -224,7 +224,7 @@ public class UserController {
                 }
             }
         }
-        //Hem de passar el role d’usuari quan fem la petició
+        //Hem de passar el role dels usuaris que volem llistar quan fem la petició
         JSONObject user = new JSONObject().put("user", username);
         user.put("role", "0");
         String JSONBody = user.toString();
@@ -241,7 +241,43 @@ public class UserController {
         usersList.setUsers(users);
         model.addAttribute("users", usersList);
                
-        return "llistatUusaris";
+        return "llistatUsuaris";
+    }
+    
+    @PostMapping("updateUser")
+    public String updateUser(@ModelAttribute UserDetails user, Model model, HttpServletRequest request) throws IOException{
+        model.addAttribute("user", user);
+        return "profile";
+    }
+    
+    @PostMapping("deleteUser")
+    public String deleteUser(@ModelAttribute UserDetails user, Model model, HttpServletRequest request) throws IOException{
+        
+        //Agafem el token de la cookie del client
+        String token = null;
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                if (cookie.getName().equals("token")) {
+                    token = cookie.getValue();
+                }
+            }
+        }
+        String JSONBody = new JSONObject(user).toString();
+        String endpoint = "/deleteUser";
+        
+        //Fem la petició a l’API
+        String apiResponse = APIRequests.newRequest(JSONBody, token, endpoint);
+        
+        //Per capturar dades de la resposta, hem de passar l’String a JSONObject
+        JSONObject myResponse = new JSONObject(apiResponse);
+        
+        //Mostrem una View diferent en funció de la resposta
+        if (myResponse.get("status").equals(SUCCESS)) {
+            return "result";
+        } else {
+            return "result2";
+        }
     }
     
 }
