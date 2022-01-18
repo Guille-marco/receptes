@@ -105,7 +105,7 @@
                 <div class="row">
                     <div class="col-12 col-sm-6 col-lg-4">
                         <div class="form-group mb-30">
-                            <form class="form-inline" action="#" th:action="@{/recipesByName}" th:object="${recipe}" method="post" enctype="multipart/form-data">
+                            <form class="form-inline" action="#" th:action="@{/recipesByName}" th:object="${Recipe}" method="post" enctype="multipart/form-data">
                                 <input class="form-control mr-sm-2" type="search" placeholder="Buscar per nom" aria-label="Search" th:field="*{name}">
                                 <button class="btn btn-receptes my-2 my-sm-0" type="submit">Buscar</button>
                             </form>
@@ -114,7 +114,7 @@
 
                     <div class="col-12 col-sm-6 col-lg-4">
                         <div class="form-group mb-30">
-                            <form class="form-inline" action="#" th:action="@{/recipesByIngredient}" th:object="${recipe}" method="post" enctype="multipart/form-data">
+                            <form class="form-inline" action="#" th:action="@{/recipesByIngredient}" th:object="${Recipe}" method="post" enctype="multipart/form-data">
                                 <input class="form-control mr-sm-2" type="search" placeholder="Buscar per ingredients" aria-label="Search" th:field="*{ingredients}">
                                 <button class="btn btn-receptes my-2 my-sm-0" type="submit">Buscar</button>
                             </form>
@@ -123,7 +123,7 @@
 
                     <div class="col-12 col-sm-6 col-lg-4">
                         <div class="form-group mb-30">
-                            <form class="form-inline" action="#" th:action="@{/recipesByAuthor}" th:object="${recipe}" method="post" enctype="multipart/form-data">
+                            <form class="form-inline" action="#" th:action="@{/recipesByAuthor}" th:object="${Recipe}" method="post" enctype="multipart/form-data">
                                 <input class="form-control mr-sm-2" type="search" placeholder="Buscar per autor" aria-label="Search" th:field="*{user}">
                                 <button class="btn btn-receptes my-2 my-sm-0" type="submit">Buscar</button>
                             </form>

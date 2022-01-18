@@ -49,7 +49,7 @@ public class UserController {
     @PostMapping("/login")
     public String loginSubmit(@ModelAttribute("usuari") Usuari usuari, Model model, HttpServletResponse response) throws IOException {
         model.addAttribute("usuari", new Usuari());
-        model.addAttribute("recipe", new Input_Recipe());
+        model.addAttribute("Recipe", new Input_Recipe());
 
         String JSONBody = new JSONObject(usuari).toString();
         //System.out.println(JSONBody);
