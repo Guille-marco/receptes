@@ -212,4 +212,16 @@ public class UserController {
         
     }
     
+    @GetMapping("/logout")
+    public String logout(Model model, HttpServletRequest request, HttpServletResponse response) {
+        Cookie[] cookies = request.getCookies();
+        if (cookies != null) {
+            for (Cookie cookie : cookies) {
+                cookie.setMaxAge(0);
+                response.addCookie(cookie);
+            }
+        }
+        return "index";
+    }
+    
 }
